@@ -1,0 +1,23 @@
+{
+  "db_name": "DB_768_2",
+  "embedding_model": "intfloat/multilingual-e5-base",
+  "vector_dimension": 768,
+  "chunk_size": 1000,
+  "overlap": 200,
+  "documents_count": 7,
+  "chunks_count": 204,
+  "created_at": "2026-02-27T07:46:36.611953+00:00",
+  "persist_directory": "D:\\IP_Bot\\Chroma_DB_768_2\\DB_768_2",
+  "supported_formats": [
+    "csv",
+    "docx",
+    "json",
+    "md",
+    "txt",
+    "xlsx"
+  ],
+  "e5_prefix": {
+    "doc": "passage: ",
+    "query": "query: "
+  }
+}

@@ -1,0 +1,28 @@
+[Unit]
+Description=Legal Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=legalbot
+Group=legalbot
+WorkingDirectory=/opt/legal-bot
+EnvironmentFile=/opt/legal-bot/.env
+ExecStart=/opt/legal-bot/venv/bin/python /opt/legal-bot/bot.py
+Restart=always
+RestartSec=5
+TimeoutStartSec=60
+TimeoutStopSec=20
+KillSignal=SIGINT
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/legal-bot
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
