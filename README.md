@@ -53,7 +53,7 @@
 cd D:\Legal_Bot
 python -m venv venv
 .\venv\Scripts\activate
-pip install -r requirements.txt
+pip install --no-cache-dir -r requirements.txt
 copy env_example .env
 python bot.py
 ```
@@ -64,7 +64,7 @@ python bot.py
 cd /path/to/legal-bot
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install --no-cache-dir -r requirements.txt
 cp env_example .env
 python bot.py
 ```
@@ -91,8 +91,10 @@ cd <your-repo>
 ### Шаг 2: Установка зависимостей
 
 ```bash
-pip install -r requirements.txt
+pip install --no-cache-dir -r requirements.txt
 ```
+
+`requirements.txt` уже фиксирует CPU-ветку `torch` для Linux, чтобы на VPS не подтягивались тяжелые `nvidia/*` и `triton`.
 
 ### Шаг 3: Настройка `.env`
 
@@ -216,7 +218,7 @@ cd /opt
 sudo -u legalbot git clone https://github.com/<your-user>/<your-repo>.git legal-bot
 cd /opt/legal-bot
 sudo -u legalbot python3 -m venv venv
-sudo -u legalbot /opt/legal-bot/venv/bin/pip install -r requirements.txt
+sudo -u legalbot /opt/legal-bot/venv/bin/pip install --no-cache-dir -r requirements.txt
 ```
 
 ### 4) Секреты и база знаний
@@ -261,7 +263,7 @@ journalctl -u legal-telegram-bot -f
 ```bash
 cd /opt/legal-bot
 sudo -u legalbot git pull origin main
-sudo -u legalbot /opt/legal-bot/venv/bin/pip install -r requirements.txt
+sudo -u legalbot /opt/legal-bot/venv/bin/pip install --no-cache-dir -r requirements.txt
 sudo systemctl restart legal-telegram-bot
 sudo systemctl status legal-telegram-bot
 ```
@@ -294,6 +296,7 @@ legal-bot/
 - Не публикуй `.env` и `google-service-account.json`.
 - Для стабильной работы на сервере обязательно запускай через `systemd`.
 - Если включен `GOOGLE_SHEET_ENABLED=true`, но нет доступа к таблице, бот продолжит работу без логирования.
+- Для VPS с маленьким диском всегда используй установку с `--no-cache-dir` (это сильно снижает пиковое потребление диска).
 
 ---
 

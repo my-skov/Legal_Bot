@@ -1,7 +1,10 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 python-telegram-bot>=21.0
 python-dotenv>=1.0.1
 openai>=1.58.1
 chromadb>=0.5.5
+torch==2.8.0+cpu; platform_system == "Linux"
 sentence-transformers>=3.0.1
 gspread>=6.1.2
 aiolimiter>=1.1.0
